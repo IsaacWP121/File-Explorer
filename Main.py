@@ -2,7 +2,7 @@ import os
 from tkinter import *
 searching_dir = "D:\\Programming\\Python" # Default Location
 
-class Main(Tk):
+class Main(Tk): # Creates Parent window and handels switching between Frames
 	def __init__(self):
 		Tk.__init__(self)
 		Parent = Frame(self)
@@ -20,17 +20,17 @@ class Main(Tk):
 	def show_frame(self, page):
 		self.Frames[page].tkraise()
 
-def Get_dir(string, swapper):
+def Get_dir(string, swapper): # Checks if he given dir is functional
 	try:
 		os.path.exists(string)
 	except:
 		print("error")
-	else:
+	else: # if it is it switches to the second screen
 		searching_dir = string
 		swapper.show_frame(Screen2)
 
 
-class MainFrame(Frame):
+class MainFrame(Frame):  # first frame 
 	def __init__(self, parent, swapper):
 		Frame.__init__(self, parent)
 		path_entry = Entry(self)
@@ -38,7 +38,7 @@ class MainFrame(Frame):
 		path_entry.pack()
 		
 
-class Screen2(Frame):
+class Screen2(Frame): # second frame
 	def __init__(self, parent, swapper):
 		Frame.__init__(self, parent)
 		x = []
@@ -54,6 +54,8 @@ class Screen2(Frame):
 		button1 = Button(self, text="back",command=lambda:swapper.show_frame(MainFrame))
 		button1.pack(side="top", anchor="w")
 
-app = Main()
-app.title("File Explorer")
-app.mainloop()
+
+if __name__ == "__main__": # If the file is run on it's own it will well... run
+	app = Main()
+	app.title("File Explorer")
+	app.mainloop()
