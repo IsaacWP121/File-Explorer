@@ -1,6 +1,6 @@
 import os
 from tkinter import *
-searching_dir = "D:\\Programming\\Python"
+searching_dir = "D:\\Programming\\Python" # Default Location
 
 class Main(Tk):
 	def __init__(self):
